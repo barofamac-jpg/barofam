@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://barofam.com/sitemap.xml
