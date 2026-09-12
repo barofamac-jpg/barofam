@@ -249,11 +249,20 @@
     var isBot = /bot|crawl|spider|slurp|facebookexternalhit|twitterbot|kakaotalk-scrap|discordbot|whatsapp|telegrambot|applebot|preview/i.test(ua);
     var storeUrl = isIOSDevice ? (IOS_URL ? iosHref : null) : (isAndroidDevice ? PLAY_URL : null);
     if (storeUrl && !isBot) {
-      var goEl = document.createElement('div');
-      goEl.textContent = 'جارٍ التحويل إلى المتجر…';
-      goEl.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#f1f4f8;color:#555;' +
-        'display:flex;align-items:center;justify-content:center;font-size:15px;text-align:center;padding:24px;';
-      document.body.appendChild(goEl);
+      // 페이지 내용은 그대로 두고, 하단에 작은 안내만 살짝 띄운다(전체 화면을 덮지 않는다).
+      var toast = document.createElement('div');
+      toast.textContent = 'جارٍ فتح المتجر…';
+      toast.style.cssText = 'position:fixed;bottom:16px;left:50%;transform:translateX(-50%);' +
+        'background:#222;color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;' +
+        'z-index:9999;box-shadow:0 2px 10px rgba(0,0,0,.2);';
+      document.body.appendChild(toast);
+      // 스토어 앱으로 전환됐다가 다시 돌아오면 안내를 지운다 — 페이지는 원래 그대로 보인다.
+      function dismissToast() { if (toast.parentNode) toast.remove(); }
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') dismissToast();
+      });
+      window.addEventListener('pageshow', dismissToast);
+      setTimeout(dismissToast, 4000); // 위 이벤트가 안 잡히는 경우를 대비한 안전장치
       setTimeout(function () { location.href = storeUrl; }, 800); // GA 전송 시간을 벌기 위한 지연
     }
   </script>
