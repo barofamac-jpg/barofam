@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://barofam.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://barofam.com/about/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://barofam.com/contact/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://barofam.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://barofam.com/growie/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://barofam.com/drop_bingo/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://barofam.com/guides/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://barofam.com/guides/gugudan/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -13,4 +12,95 @@
   <url><loc>https://barofam.com/guides/jipjungryeok/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://barofam.com/guides/yeonsan-silsu/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://barofam.com/guides/mmapyo-munjejip/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://barofam.com/grovii/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/ja/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/zh/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/id/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/ar/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
+  <url>
+    <loc>https://barofam.com/grovii/es/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://barofam.com/grovii/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://barofam.com/grovii/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://barofam.com/grovii/ja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://barofam.com/grovii/zh/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://barofam.com/grovii/id/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://barofam.com/grovii/ar/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://barofam.com/grovii/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://barofam.com/grovii/en/" />
+  </url>
 </urlset>
