@@ -213,16 +213,34 @@
     var s = document.getElementById('lang-select');
     if (s) s.addEventListener('change', function () { location.href = s.value; });
 
-    // 스토어 버튼 유입 추적: Play 는 referrer(utm), App Store 는 캠페인 토큰(ct). 언어별로 utm_content 를 붙인다.
+    // 스토어 버튼 유입 추적:
+    // 랜딩페이지 주소에 유입 파라미터(광고 캠페인의 utm_* 등)가 붙어 있으면 그 값을 그대로
+    // 스토어까지 이어서 전달해 원래 유입 경로가 끊기지 않게 한다. 없으면(직접 방문 등)
+    // "grovii_landing" 기본값을 쓴다.
     var LANG = 'id';
     var IOS_URL = 'https://apps.apple.com/app/id6809675819'; // 국가 코드 없이(자동 스토어 라우팅) — 방문자의 App Store 지역으로 자동 연결
-    var ref = 'utm_source=grovii_landing&utm_medium=web&utm_campaign=site&utm_content=' + LANG;
+    var incoming = new URLSearchParams(location.search);
+    var hasIncomingUTM = incoming.has('utm_source') || incoming.has('utm_campaign');
+    var ref = hasIncomingUTM ? incoming.toString() : ('utm_source=grovii_landing&utm_medium=web&utm_campaign=site&utm_content=' + LANG);
     var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=' + encodeURIComponent(ref);
     document.querySelectorAll('a.play').forEach(function (a) { a.href = PLAY_URL; });
     if (IOS_URL) {
-      var iosHref = IOS_URL + (IOS_URL.indexOf('?') >= 0 ? '&' : '?') + 'ct=grovii_landing_' + LANG;
+      var ct = (hasIncomingUTM && (incoming.get('utm_campaign') || incoming.get('utm_source'))) || ('grovii_landing_' + LANG);
+      var iosHref = IOS_URL + (IOS_URL.indexOf('?') >= 0 ? '&' : '?') + 'ct=' + encodeURIComponent(ct);
       document.querySelectorAll('[data-ios]').forEach(function (a) { a.href = iosHref; a.hidden = false; });
       document.querySelectorAll('[data-ios-soon]').forEach(function (x) { x.hidden = true; });
+    }
+
+    // 모바일 방문자에게는 자기 기기에 맞는 스토어 버튼만 보여준다.
+    // 데스크탑은 어차피 설치가 안 되니 그대로 둘 다 보여준다.
+    var ua = navigator.userAgent || '';
+    var isIOSDevice = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS 는 UA 상 Mac 으로 표시됨
+    var isAndroidDevice = /Android/.test(ua);
+    if (isIOSDevice && IOS_URL) {
+      document.querySelectorAll('a.play').forEach(function (a) { a.hidden = true; });
+    } else if (isAndroidDevice) {
+      document.querySelectorAll('[data-ios], [data-ios-soon]').forEach(function (x) { x.hidden = true; });
     }
   </script>
   <script src="/grovii/analytics.js" defer></script>
