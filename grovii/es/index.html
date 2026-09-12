@@ -215,7 +215,7 @@
 
     // 스토어 버튼 유입 추적: Play 는 referrer(utm), App Store 는 캠페인 토큰(ct). 언어별로 utm_content 를 붙인다.
     var LANG = 'es';
-    var IOS_URL = ''; // App Store 주소가 정해지면 여기에 넣으세요 (예: 'https://apps.apple.com/app/idXXXXXXXXXX')
+    var IOS_URL = 'https://apps.apple.com/app/id6809675819'; // 국가 코드 없이(자동 스토어 라우팅) — 방문자의 App Store 지역으로 자동 연결
     var ref = 'utm_source=grovii_landing&utm_medium=web&utm_campaign=site&utm_content=' + LANG;
     var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=' + encodeURIComponent(ref);
     document.querySelectorAll('a.play').forEach(function (a) { a.href = PLAY_URL; });
