@@ -242,6 +242,20 @@
     } else if (isAndroidDevice) {
       document.querySelectorAll('[data-ios], [data-ios-soon]').forEach(function (x) { x.hidden = true; });
     }
+
+    // 모바일 실사용자는 버튼을 누르지 않아도 스토어로 자동 이동시킨다.
+    // 검색엔진 크롤러·SNS 링크 미리보기 봇은 실제 페이지 내용을 그대로 봐야
+    // 색인/미리보기가 되므로 제외한다.
+    var isBot = /bot|crawl|spider|slurp|facebookexternalhit|twitterbot|kakaotalk-scrap|discordbot|whatsapp|telegrambot|applebot|preview/i.test(ua);
+    var storeUrl = isIOSDevice ? (IOS_URL ? iosHref : null) : (isAndroidDevice ? PLAY_URL : null);
+    if (storeUrl && !isBot) {
+      var goEl = document.createElement('div');
+      goEl.textContent = '正在跳转到应用商店…';
+      goEl.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#f1f4f8;color:#555;' +
+        'display:flex;align-items:center;justify-content:center;font-size:15px;text-align:center;padding:24px;';
+      document.body.appendChild(goEl);
+      setTimeout(function () { location.href = storeUrl; }, 800); // GA 전송 시간을 벌기 위한 지연
+    }
   </script>
   <script src="/grovii/analytics.js" defer></script>
 </body>
