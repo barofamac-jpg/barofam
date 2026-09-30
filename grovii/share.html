@@ -381,6 +381,15 @@
     var cta = document.getElementById('cta-button');
     cta.textContent = L.cta;
     cta.href = isIOSDevice ? iosHref : PLAY_URL;
+
+    // preview=1 은 그로비 앱 안 웹뷰(공유 전 미리보기)에서 열렸다는 표시.
+    // 이미 앱이 있는 사람이라 설치 유도 버튼/문구가 필요 없어서 숨긴다.
+    // 실제로 공유되는 링크에는 이 파라미터가 없어 일반 브라우저에서는
+    // 그대로 보인다.
+    if (qs.get('preview') === '1') {
+      cta.hidden = true;
+      document.getElementById('t-promo').hidden = true;
+    }
   </script>
 </body>
 </html>
