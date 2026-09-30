@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">우리 아이 예상 키, 또래 몇 등일까? - Grovii 성장 리포트</title>
+  <meta name="description" content="키 성장 추세로 예상 성인 키와 또래 순위를 무료로 확인해보세요. 아이 키 기록 앱 Grovii." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://barofam.com/grovii/share.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://barofam.com/grovii/share.html" />
+  <meta property="og:title" content="우리 아이 예상 키, 또래 몇 등일까? - Grovii 성장 리포트" />
+  <meta property="og:description" content="키 성장 추세로 예상 성인 키와 또래 순위를 무료로 확인해보세요. 아이 키 기록 앱 Grovii." />
+  <meta property="og:image" content="https://barofam.com/grovii/img/shot_ko_2.jpg" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="우리 아이 예상 키, 또래 몇 등일까? - Grovii 성장 리포트" />
+  <meta name="twitter:description" content="키 성장 추세로 예상 성인 키와 또래 순위를 무료로 확인해보세요. 아이 키 기록 앱 Grovii." />
+  <meta name="twitter:image" content="https://barofam.com/grovii/img/shot_ko_2.jpg" />
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #F4F5F3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;
+      color: #2C2410;
+    }
+    .wrap { max-width: 420px; margin: 0 auto; padding: 20px 16px 40px; }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 18px; }
+    .brand img { width: 28px; height: 28px; border-radius: 7px; }
+    .brand span { font-weight: 800; font-size: 18px; }
+    .card { background: #fff; border: 0.5px solid #E4E1D8; border-radius: 16px; padding: 18px; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .card-head h1 { font-size: 18px; font-weight: 700; margin: 0; }
+    .badge { border: 0.5px solid #D8D5CC; border-radius: 999px; padding: 3px 10px; font-size: 11px; color: #8A8677; white-space: nowrap; }
+    .meta { font-size: 12px; color: #8A8677; margin-bottom: 14px; }
+    .rank-label { font-size: 12px; color: #8A8677; font-weight: 600; margin-bottom: 8px; }
+    .axis-caption { font-size: 10px; color: #B0AC9E; text-align: center; margin-top: 2px; }
+    .section { border-top: 0.5px solid #EDEBE3; margin-top: 16px; padding-top: 14px; }
+    .section-label { font-size: 12px; color: #8A8677; margin-bottom: 4px; }
+    .big-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+    .big-num { font-size: 32px; font-weight: 800; }
+    .range { font-size: 12px; color: #8A8677; }
+    .pill { background: #F1EFE8; color: #8A8677; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; display: inline-block; }
+    .vel-row { display: flex; align-items: center; justify-content: space-between; }
+    .vel-num { font-size: 20px; font-weight: 800; }
+    .vel-unit { font-size: 12px; font-weight: 600; color: #8A8677; }
+    .vel-ref { font-size: 11px; color: #B0AC9E; text-align: right; }
+    .disclaimer { font-size: 11px; color: #B0AC9E; line-height: 1.5; margin-top: 12px; }
+    .cta {
+      display: block; text-align: center; margin-top: 14px; background: #3FB88C; color: #fff;
+      font-weight: 700; font-size: 15px; padding: 14px; border-radius: 999px; text-decoration: none;
+    }
+    .promo { text-align: center; margin-top: 10px; font-size: 13px; color: #8A8677; line-height: 1.5; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <img src="/grovii/img/icon.jpg" alt="Grovii" />
+      <span>Grovii</span>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <h1 id="t-title">성장 리포트</h1>
+        <div class="badge" id="ref-badge"></div>
+      </div>
+      <div class="meta" id="meta-line"></div>
+
+      <div id="rank-block">
+        <div class="rank-label" id="rank-label"></div>
+        <svg viewBox="0 0 320 100" width="100%" height="100" style="direction:ltr">
+          <path id="curve-outline" fill="none" stroke="#EDEBE3" stroke-width="2" />
+          <path id="curve-fill" fill="#3FB88C" opacity="0.15" />
+          <line id="marker-line" x1="0" y1="0" x2="0" y2="0" stroke="#3FB88C" stroke-width="2" />
+          <circle id="marker-dot" r="5" fill="#3FB88C" />
+          <text id="marker-label" text-anchor="middle" font-size="10" font-weight="700" fill="#2E8E6C"></text>
+          <line x1="4" y1="86" x2="316" y2="86" stroke="#E4E1D8" stroke-width="1" />
+          <text id="axis-lo" x="4" y="98" font-size="10" fill="#8A8677"></text>
+          <text id="axis-hi" x="278" y="98" font-size="10" fill="#8A8677" text-anchor="end"></text>
+        </svg>
+        <div class="axis-caption" id="axis-caption"></div>
+      </div>
+
+      <div class="section">
+        <div class="section-label" id="t-predicted-label"></div>
+        <div class="big-row">
+          <div class="big-num" id="pred-num"></div>
+          <div class="range" id="pred-range"></div>
+        </div>
+        <div class="pill" id="genetic-pill" hidden></div>
+      </div>
+
+      <div class="section" id="velocity-block">
+        <div class="vel-row" id="velocity-known">
+          <div>
+            <div class="section-label" id="t-velocity-label"></div>
+            <div><span class="vel-num" id="vel-num"></span> <span class="vel-unit" id="vel-unit"></span></div>
+          </div>
+          <div class="vel-ref" id="vel-ref"></div>
+        </div>
+        <div class="section-label" id="velocity-unknown" hidden></div>
+      </div>
+
+      <div class="disclaimer" id="t-disclaimer"></div>
+    </div>
+
+    <a class="cta" id="cta-button" href="#"></a>
+    <div class="promo" id="t-promo"></div>
+  </div>
+
+  <script src="/grovii/analytics.js" defer></script>
+  <script>
+    var STR = {
+      ko: {
+        pageTitle: 'Grovii 성장 리포트', title: '성장 리포트',
+        boy: '남아', girl: '여아', ageFmt: function (y, m) { return y + '년 ' + m + '개월'; },
+        nowHeight: '지금 키 {h}cm',
+        rankLabel: '지금 또래 100명 중 {r}번째',
+        markerLabel: '우리 아이 지금 {h}cm',
+        axisCaption: '또래 키 분포(하위 3%~상위 3%), {ref} 기준',
+        predictedLabel: '예상 성인 키 · 성장 추세 기준',
+        rangeFmt: '범위 {min}~{max}cm',
+        genetic: '유전 예상 {min}~{max}cm',
+        velocityLabel: '최근 1년간 성장 속도', velocityUnit: 'cm/년',
+        velocityRef: '또래 평균\n{min}~{max}cm/년',
+        velocityUnknown: '기록을 더 쌓으면 최근 성장 속도를 보여드려요.',
+        disclaimer: '성장 리포트는 입력한 기록을 바탕으로 계산한 참고용 추정치이며, 의학적 진단이 아니에요.',
+        cta: '우리 아이 예상 키 알아보기 →',
+        promo: '그로비(Grovii) 앱을 설치해서 키를 꾸준히 기록하고 성장 추이를 확인하세요.',
+        fallbackTitle: 'Grovii로 우리 아이 성장을 기록하세요',
+        fallbackBody: '키·몸무게를 기록하면 또래 백분위와 예상 키를 알려드려요.',
+        refNames: { KR_KDCA: '질병관리청', US_CDC: 'CDC', WHO: 'WHO', JP_MHLW: '후생노동성', CN_NHC: '국가위생건강위원회', UK90: 'UK90' },
+      },
+      en: {
+        pageTitle: 'Grovii Growth Report', title: 'Growth report',
+        boy: 'Boy', girl: 'Girl', ageFmt: function (y, m) { return y + 'y ' + m + 'm'; },
+        nowHeight: 'Current height {h}cm',
+        rankLabel: 'Ranked {r}th out of 100 kids of the same age',
+        markerLabel: 'This child · {h}cm now',
+        axisCaption: 'Peer height range (3rd–97th percentile), {ref} standard',
+        predictedLabel: 'Predicted adult height · Based on growth trend',
+        rangeFmt: 'Range {min}–{max}cm',
+        genetic: 'Genetic estimate {min}–{max}cm',
+        velocityLabel: 'Growth rate (last 12 months)', velocityUnit: 'cm/yr',
+        velocityRef: 'Typical\n{min}–{max}cm/yr',
+        velocityUnknown: 'Keep recording to see the recent growth rate.',
+        disclaimer: 'This report is a rough estimate based on entered records, not a medical diagnosis.',
+        cta: 'Check your child’s predicted height →',
+        promo: 'Install Grovii to track your child’s height and see their growth trend.',
+        fallbackTitle: 'Track your child’s growth with Grovii',
+        fallbackBody: 'Log height and weight to see peer percentiles and predicted adult height.',
+        refNames: { KR_KDCA: 'KDCA (Korea)', US_CDC: 'CDC', WHO: 'WHO', JP_MHLW: 'MHLW (Japan)', CN_NHC: 'NHC (China)', UK90: 'UK90' },
+      },
+      ja: {
+        pageTitle: 'Grovii 成長レポート', title: '成長レポート',
+        boy: '男の子', girl: '女の子', ageFmt: function (y, m) { return y + '歳' + m + 'ヶ月'; },
+        nowHeight: '今の身長 {h}cm',
+        rankLabel: '今、同年齢100人中{r}番目',
+        markerLabel: 'この子・今{h}cm',
+        axisCaption: '同年齢の身長分布(下位3%〜上位3%)、{ref}基準',
+        predictedLabel: '予測成人身長・成長傾向ベース',
+        rangeFmt: '範囲{min}〜{max}cm',
+        genetic: '遺伝的予測{min}〜{max}cm',
+        velocityLabel: '直近1年間の成長スピード', velocityUnit: 'cm/年',
+        velocityRef: '同年齢平均\n{min}〜{max}cm/年',
+        velocityUnknown: '記録が増えると最近の成長スピードを表示します。',
+        disclaimer: 'この成長レポートは入力記録に基づく参考値で、医学的診断ではありません。',
+        cta: 'うちの子の予想身長を調べる →',
+        promo: 'グロビ(Grovii)アプリをインストールして、身長を記録し成長の推移を確認しましょう。',
+        fallbackTitle: 'グロビでお子さんの成長を記録しましょう',
+        fallbackBody: '身長・体重を記録すると、同年齢の百分位と予測身長がわかります。',
+        refNames: { KR_KDCA: '韓国疾病管理庁', US_CDC: 'CDC', WHO: 'WHO', JP_MHLW: '厚生労働省', CN_NHC: '国家衛生健康委員会', UK90: 'UK90' },
+      },
+      zh: {
+        pageTitle: 'Grovii 成长报告', title: '成长报告',
+        boy: '男孩', girl: '女孩', ageFmt: function (y, m) { return y + '岁' + m + '个月'; },
+        nowHeight: '目前身高 {h}cm',
+        rankLabel: '目前在同龄100人中排第{r}位',
+        markerLabel: '这个孩子·目前{h}cm',
+        axisCaption: '同龄身高分布(后3%~前3%)，{ref}标准',
+        predictedLabel: '预测成人身高·基于生长趋势',
+        rangeFmt: '范围{min}~{max}cm',
+        genetic: '遗传预测{min}~{max}cm',
+        velocityLabel: '最近1年生长速度', velocityUnit: 'cm/年',
+        velocityRef: '同龄平均\n{min}~{max}cm/年',
+        velocityUnknown: '记录多一些后即可显示最近的生长速度。',
+        disclaimer: '此成长报告基于所输入记录计算，仅供参考，并非医学诊断。',
+        cta: '看看我家孩子的预测身高 →',
+        promo: '安装格罗维(Grovii)应用，持续记录身高，查看成长趋势。',
+        fallbackTitle: '用格罗维记录孩子的成长',
+        fallbackBody: '记录身高体重，即可查看同龄百分位和预测身高。',
+        refNames: { KR_KDCA: '韩国疾病管理厅', US_CDC: 'CDC', WHO: 'WHO', JP_MHLW: '日本厚生劳动省', CN_NHC: '国家卫生健康委员会', UK90: 'UK90' },
+      },
+      id: {
+        pageTitle: 'Laporan Pertumbuhan Grovii', title: 'Laporan pertumbuhan',
+        boy: 'Anak laki-laki', girl: 'Anak perempuan', ageFmt: function (y, m) { return y + ' th ' + m + ' bln'; },
+        nowHeight: 'Tinggi sekarang {h}cm',
+        rankLabel: 'Sekarang peringkat {r} dari 100 anak seusia',
+        markerLabel: 'Anak ini · sekarang {h}cm',
+        axisCaption: 'Rentang tinggi seusia (persentil ke-3–97), standar {ref}',
+        predictedLabel: 'Perkiraan tinggi dewasa · berdasarkan tren pertumbuhan',
+        rangeFmt: 'Kisaran {min}–{max}cm',
+        genetic: 'Perkiraan genetik {min}–{max}cm',
+        velocityLabel: 'Laju pertumbuhan 12 bulan terakhir', velocityUnit: 'cm/thn',
+        velocityRef: 'Rata-rata seusia\n{min}–{max}cm/thn',
+        velocityUnknown: 'Catat lebih banyak untuk melihat laju pertumbuhan terbaru.',
+        disclaimer: 'Laporan ini perkiraan kasar dari catatan yang dimasukkan, bukan diagnosis medis.',
+        cta: 'Cek perkiraan tinggi anak Anda →',
+        promo: 'Pasang aplikasi Grovii untuk mencatat tinggi badan secara rutin dan memantau tren pertumbuhan.',
+        fallbackTitle: 'Catat pertumbuhan anak Anda dengan Grovii',
+        fallbackBody: 'Catat tinggi dan berat badan untuk melihat persentil seusia dan perkiraan tinggi dewasa.',
+        refNames: { KR_KDCA: 'KDCA (Korea)', US_CDC: 'CDC', WHO: 'WHO', JP_MHLW: 'MHLW (Jepang)', CN_NHC: 'NHC (Tiongkok)', UK90: 'UK90' },
+      },
+      ar: {
+        pageTitle: 'تقرير نمو Grovii', title: 'تقرير النمو',
+        boy: 'ولد', girl: 'بنت', ageFmt: function (y, m) { return y + ' سنة ' + m + ' شهر'; },
+        nowHeight: 'الطول الآن {h}سم',
+        rankLabel: 'الآن بالمرتبة {r} من بين 100 من نفس العمر',
+        markerLabel: 'هذا الطفل · الآن {h}سم',
+        axisCaption: 'مدى طول الأقران (المئين 3–97)، وفق معيار {ref}',
+        predictedLabel: 'الطول المتوقع بالغًا · حسب اتجاه النمو',
+        rangeFmt: 'المدى {min}–{max}سم',
+        genetic: 'التقدير الوراثي {min}–{max}سم',
+        velocityLabel: 'معدل النمو خلال آخر 12 شهرًا', velocityUnit: 'سم/سنة',
+        velocityRef: 'متوسط الأقران\n{min}–{max}سم/سنة',
+        velocityUnknown: 'سجّل المزيد لعرض معدل النمو الأخير.',
+        disclaimer: 'هذا التقرير تقدير تقريبي بناءً على السجلات المُدخلة، وليس تشخيصًا طبيًا.',
+        cta: 'اكتشف الطول المتوقع لطفلك ←',
+        promo: 'ثبّت تطبيق جروفي (Grovii) لتسجيل الطول باستمرار ومتابعة اتجاه النمو.',
+        fallbackTitle: 'سجّل نمو طفلك مع جروفي',
+        fallbackBody: 'سجّل الطول والوزن لمعرفة المئين والطول المتوقع بالغًا.',
+        refNames: { KR_KDCA: 'هيئة كوريا لمكافحة الأمراض', US_CDC: 'CDC', WHO: 'منظمة الصحة العالمية', JP_MHLW: 'وزارة الصحة اليابانية', CN_NHC: 'لجنة الصحة الوطنية الصينية', UK90: 'UK90' },
+      },
+      es: {
+        pageTitle: 'Informe de crecimiento Grovii', title: 'Informe de crecimiento',
+        boy: 'Niño', girl: 'Niña', ageFmt: function (y, m) { return y + ' a ' + m + ' m'; },
+        nowHeight: 'Estatura actual {h}cm',
+        rankLabel: 'Ahora en el puesto {r} de 100 niños de su edad',
+        markerLabel: 'Este niño · ahora {h}cm',
+        axisCaption: 'Rango de estatura de la misma edad (percentil 3–97), estándar {ref}',
+        predictedLabel: 'Estatura adulta estimada · según la tendencia de crecimiento',
+        rangeFmt: 'Rango {min}–{max}cm',
+        genetic: 'Estimación genética {min}–{max}cm',
+        velocityLabel: 'Ritmo de crecimiento (últimos 12 meses)', velocityUnit: 'cm/año',
+        velocityRef: 'Promedio de su edad\n{min}–{max}cm/año',
+        velocityUnknown: 'Registra más mediciones para ver el ritmo de crecimiento reciente.',
+        disclaimer: 'Este informe es una estimación aproximada basada en los registros ingresados, no un diagnóstico médico.',
+        cta: 'Descubre la estatura estimada de tu hijo →',
+        promo: 'Instala Grovii para registrar la estatura de tu hijo y ver su tendencia de crecimiento.',
+        fallbackTitle: 'Registra el crecimiento de tu hijo con Grovii',
+        fallbackBody: 'Registra estatura y peso para ver el percentil de su edad y la estatura adulta estimada.',
+        refNames: { KR_KDCA: 'KDCA (Corea)', US_CDC: 'CDC', WHO: 'OMS', JP_MHLW: 'MHLW (Japón)', CN_NHC: 'NHC (China)', UK90: 'UK90' },
+      },
+    };
+
+    function fmt(tpl, vals) {
+      return tpl.replace(/\{(\w+)\}/g, function (_, k) { return vals[k]; });
+    }
+
+    var qs = new URLSearchParams(location.search);
+    var lang = qs.get('lang');
+    if (!lang || !STR[lang]) lang = 'ko';
+    var L = STR[lang];
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+    if (lang === 'ar') document.documentElement.dir = 'rtl';
+    document.title = L.pageTitle;
+    document.getElementById('t-title').textContent = L.title;
+    document.getElementById('t-predicted-label').textContent = L.predictedLabel;
+    document.getElementById('t-velocity-label').textContent = L.velocityLabel;
+    document.getElementById('t-disclaimer').textContent = L.disclaimer;
+    document.getElementById('t-promo').textContent = L.promo;
+
+    var h = parseFloat(qs.get('h'));
+    var m = parseInt(qs.get('m'), 10);
+    var g = qs.get('g');
+    var r = parseInt(qs.get('r'), 10);
+    var p = parseFloat(qs.get('p'));
+    var pmin = parseFloat(qs.get('pmin'));
+    var pmax = parseFloat(qs.get('pmax'));
+    var lo = parseFloat(qs.get('lo'));
+    var hi = parseFloat(qs.get('hi'));
+    var gmin = qs.get('gmin') !== null ? parseFloat(qs.get('gmin')) : null;
+    var gmax = qs.get('gmax') !== null ? parseFloat(qs.get('gmax')) : null;
+    var vel = qs.get('v') !== null ? parseFloat(qs.get('v')) : null;
+    var vmin = qs.get('vmin') !== null ? parseFloat(qs.get('vmin')) : null;
+    var vmax = qs.get('vmax') !== null ? parseFloat(qs.get('vmax')) : null;
+    var refCode = qs.get('ref') || 'KR_KDCA';
+    var refName = L.refNames[refCode] || refCode;
+
+    var hasReport = !isNaN(h) && !isNaN(m) && !isNaN(r) && !isNaN(p) && !isNaN(pmin) && !isNaN(pmax);
+
+    if (hasReport) {
+      var years = Math.floor(m / 12), months = m % 12;
+      document.getElementById('ref-badge').textContent = refName;
+      document.getElementById('meta-line').textContent =
+        (g === 'F' ? L.girl : L.boy) + ' · ' + L.ageFmt(years, months) + ' · ' + fmt(L.nowHeight, { h: h.toFixed(1) });
+      document.getElementById('rank-label').textContent = fmt(L.rankLabel, { r: r });
+      document.getElementById('pred-num').textContent = p.toFixed(1) + 'cm';
+      document.getElementById('pred-range').textContent = fmt(L.rangeFmt, { min: pmin.toFixed(1), max: pmax.toFixed(1) });
+
+      if (gmin !== null && gmax !== null && !isNaN(gmin) && !isNaN(gmax)) {
+        var gp = document.getElementById('genetic-pill');
+        gp.textContent = fmt(L.genetic, { min: gmin.toFixed(1), max: gmax.toFixed(1) });
+        gp.hidden = false;
+      }
+
+      if (vel !== null && !isNaN(vel)) {
+        document.getElementById('vel-num').textContent = vel.toFixed(1);
+        document.getElementById('vel-unit').textContent = L.velocityUnit;
+        if (vmin !== null && vmax !== null && !isNaN(vmin) && !isNaN(vmax)) {
+          document.getElementById('vel-ref').textContent = fmt(L.velocityRef, { min: vmin.toFixed(1), max: vmax.toFixed(1) });
+        }
+      } else {
+        document.getElementById('velocity-known').hidden = true;
+        var vu = document.getElementById('velocity-unknown');
+        vu.textContent = L.velocityUnknown;
+        vu.hidden = false;
+      }
+
+      if (!isNaN(lo) && !isNaN(hi)) {
+        // 백분위 곡선: 가우스 곡선을 그대로 샘플링해서 그리고, 마커는 순위(r)를
+        // 0~100 축에 선형으로 놓는다. 곡선과 같은 함수로 y를 구하니 마커가
+        // 항상 곡선 위에 정확히 놓인다.
+        var baseline = 86, peak = 10, amp = baseline - peak, cx = 160, sigma = 50;
+        function curveY(x) { return baseline - amp * Math.exp(-((x - cx) * (x - cx)) / (2 * sigma * sigma)); }
+        var pts = [];
+        for (var x = 4; x <= 316; x += 8) pts.push(x + ',' + curveY(x).toFixed(1));
+        document.getElementById('curve-outline').setAttribute('d', 'M' + pts.join(' L'));
+
+        var mx = 4 + (Math.min(Math.max(r, 1), 99) / 100) * 312;
+        var my = curveY(mx);
+        var fillPts = ['4,' + baseline];
+        for (var x2 = 4; x2 <= mx; x2 += 8) fillPts.push(x2 + ',' + curveY(x2).toFixed(1));
+        fillPts.push(mx + ',' + my.toFixed(1));
+        fillPts.push(mx + ',' + baseline);
+        document.getElementById('curve-fill').setAttribute('d', 'M' + fillPts.join(' L') + ' Z');
+
+        document.getElementById('marker-line').setAttribute('x1', mx);
+        document.getElementById('marker-line').setAttribute('x2', mx);
+        document.getElementById('marker-line').setAttribute('y1', baseline);
+        document.getElementById('marker-line').setAttribute('y2', my);
+        document.getElementById('marker-dot').setAttribute('cx', mx);
+        document.getElementById('marker-dot').setAttribute('cy', my);
+        var lbl = document.getElementById('marker-label');
+        lbl.setAttribute('x', Math.min(Math.max(mx, 40), 280));
+        lbl.setAttribute('y', Math.max(my - 9, 10));
+        lbl.textContent = fmt(L.markerLabel, { h: h.toFixed(1) });
+
+        document.getElementById('axis-lo').textContent = lo.toFixed(1) + 'cm';
+        document.getElementById('axis-hi').textContent = hi.toFixed(1) + 'cm';
+        document.getElementById('axis-caption').textContent = fmt(L.axisCaption, { ref: refName });
+      } else {
+        document.getElementById('rank-block').hidden = true;
+      }
+    } else {
+      document.getElementById('card-head') && (document.getElementById('card-head').hidden = true);
+      document.querySelector('.card').innerHTML =
+        '<h1 style="font-size:18px;font-weight:700;margin:0 0 8px">' + L.fallbackTitle + '</h1>' +
+        '<p style="font-size:13px;color:#8A8677;line-height:1.6;margin:0">' + L.fallbackBody + '</p>';
+      document.getElementById('t-disclaimer').hidden = true;
+    }
+
+    // 스토어 버튼: 공유 링크의 utm_* 를 그대로 이어받아 설치 후에도 "성장 리포트
+    // 공유"가 유입 경로로 남게 한다(랜딩페이지와 같은 방식).
+    var IOS_URL = 'https://apps.apple.com/app/id6809675819';
+    var hasIncomingUTM = qs.has('utm_source') || qs.has('utm_campaign');
+    var ref = hasIncomingUTM ? qs.toString() : ('utm_source=grovii_share&utm_medium=share&utm_campaign=growth_report');
+    var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=' + encodeURIComponent(ref);
+    var ct = (hasIncomingUTM && (qs.get('utm_campaign') || qs.get('utm_source'))) || 'grovii_share_growth_report';
+    var iosHref = IOS_URL + '?ct=' + encodeURIComponent(ct);
+
+    var ua = navigator.userAgent || '';
+    var isIOSDevice = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var cta = document.getElementById('cta-button');
+    cta.textContent = L.cta;
+    cta.href = isIOSDevice ? iosHref : PLAY_URL;
+  </script>
+</body>
+</html>
