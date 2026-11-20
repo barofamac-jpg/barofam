@@ -9,6 +9,8 @@
 // 버전 전문 페이지({page}-{버전}.html, data-version이 있는 스크립트)에서는 그 버전 기록만 확인한다:
 // - 비노출(visible: false)이거나 기록이 없으면 본문을 숨기고 '공개되지 않은 약관' 안내를 보여준다.
 // - 노출이지만 공개 일시 전이면 '시행 예정' 안내를 위에 붙여 보여준다(사전 고지용).
+// - 주소 끝에 ?preview=1 을 붙이면 기록과 상관없이 내용을 보여준다(전문을 만들며 확인용, '미리 보기' 표시).
+//   주소를 아는 사람은 누구나 볼 수 있으니 완전한 비공개는 아니다.
 (function () {
   const script = document.currentScript;
   const doc = script.dataset.doc;
@@ -51,6 +53,14 @@
       body.prepend(note);
     }
     body.hidden = false;
+  }
+
+  if (ownVersion && new URLSearchParams(location.search).get('preview') === '1') {
+    const note = document.createElement('p');
+    note.className = 'callout';
+    note.textContent = '미리 보기 — 공개 여부와 상관없이 보이는 화면이에요.';
+    document.getElementById('policy-body').prepend(note);
+    return;
   }
 
   if (ownVersion) {
