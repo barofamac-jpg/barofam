@@ -1,117 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>공지사항 - 루틴영어</title>
-<meta name="robots" content="noindex, follow" />
-<link rel="canonical" href="https://barofam.com/momeng/notice.html" />
-<link rel="icon" type="image/png" href="icon.png" />
-<style>
-  :root {
-    --text: #2f2f33;
-    --muted: #6f6f78;
-    --faint: #9a9aa4;
-    --line: #e4e4ea;
-    --bg: #ffffff;
-    --card: #fafafc;
-    --accent: #6A31A2;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    padding: 32px 20px 64px;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-    line-height: 1.75;
-    -webkit-text-size-adjust: 100%;
-  }
-  .wrap { max-width: 680px; margin: 0 auto; }
-  header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line);
-  }
-  header img { width: 28px; height: 28px; border-radius: 7px; }
-  header a { color: var(--accent); text-decoration: none; font-weight: 800; font-size: 17px; }
-  h1 { font-size: 26px; margin: 28px 0 6px; letter-spacing: -.2px; }
-  .effective { margin: 0 0 28px; color: var(--faint); font-size: 14px; }
-  h2 {
-    font-size: 17px;
-    margin: 32px 0 8px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-  }
-  p { margin: 0 0 12px; }
-  ul { margin: 0 0 12px; padding-inline-start: 20px; }
-  li { margin-bottom: 6px; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 12px; }
-  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; }
-  .callout {
-    margin: 24px 0;
-    padding: 16px 18px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    font-weight: 600;
-  }
-  a { color: var(--accent); }
-  footer {
-    margin-top: 44px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    color: var(--faint);
-    font-size: 13px;
-  }
-  .notice { border-bottom: 1px solid var(--line); }
-  .notice summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 16px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .notice summary::-webkit-details-marker { display: none; }
-  .notice .title { font-weight: 700; font-size: 16px; }
-  .notice .date { color: var(--faint); font-size: 13px; }
-  .notice .body { padding: 0 0 18px; }
-  .empty { color: var(--muted); padding: 32px 0; text-align: center; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>루틴영어</title>
+  <!-- 루틴영어 안내 페이지 주소를 barofam.com/momeng/ → barofam.com/routine-english/ 로 옮겼다(2026-11-22).
+       이미 배포된 앱·스토어에 등록된 예전 주소가 계속 열리도록, 같은 페이지의 새 주소로 바로 이동시킨다
+       (#rights 같은 페이지 안 위치도 그대로 넘긴다). -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://barofam.com/routine-english/notice.html" />
+  <script>
+    location.replace("https://barofam.com/routine-english/notice.html" + location.hash);
+  </script>
+  <meta http-equiv="refresh" content="0; url=https://barofam.com/routine-english/notice.html" />
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <img src="icon.png" alt="" />
-    <a href="./">루틴영어</a>
-  </header>
-  <h1>공지사항</h1>
-
-  <!--
-    공지 추가하는 법: 아래 목록 맨 위에 <details> 하나를 복사해 넣는다(최신이 위).
-    id는 'n' + 게시일(예: n20270105). 앱 공지 창의 [자세히 보기] 주소는 notice.html#n20270105 처럼 쓴다.
-    <details class="notice" id="n20270105">
-      <summary><span class="title">이용약관 개정 안내</span><span class="date">2027. 1. 5.</span></summary>
-      <div class="body"><p>내용</p></div>
-    </details>
-  -->
-  <div id="list">
-  </div>
-  <p class="empty" id="empty">등록된 공지사항이 없어요.</p>
-
-  <footer>&copy; barofam · <a href="terms.html">이용약관</a> · <a href="privacy-policy.html">개인정보처리방침</a></footer>
-</div>
-<script>
-  // 공지가 있으면 '없어요' 문구를 숨기고, 주소의 #id 공지는 펼쳐서 보여준다.
-  const items = document.querySelectorAll('#list details');
-  if (items.length) document.getElementById('empty').hidden = true;
-  const target = location.hash && document.querySelector(location.hash);
-  if (target && target.tagName === 'DETAILS') { target.open = true; target.scrollIntoView(); }
-</script>
+  <p>이 페이지는 이동했습니다.
+    <a href="https://barofam.com/routine-english/notice.html">https://barofam.com/routine-english/notice.html</a>
+  </p>
 </body>
 </html>
